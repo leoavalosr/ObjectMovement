@@ -1,6 +1,4 @@
 # ObjectMovement
 
-
-![Captura 1]("./Screenshot (1).png")
-
-![Captura 2]("./Screenshot (2).png")
+<img src="capturas/img01.png" alt="captura 1" width="800">
+<img src="capturas/img02.png" alt="captura 1" width="800">
