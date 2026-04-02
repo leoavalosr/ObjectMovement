@@ -104,6 +104,22 @@ void ATopDownMover::Tick(float DeltaTime)
         case EMoveDirection::Left:
             MovementStep.Y = -1.0f;
             break;
+        case EMoveDirection::UpRight:
+            MovementStep.Y = 1.0f;
+            MovementStep.X = 1.0f;
+            break;
+        case EMoveDirection::UpLeft:
+            MovementStep.Y = -1.0f;
+            MovementStep.X = 1.0f;
+            break;
+        case EMoveDirection::DownRight:
+            MovementStep.Y = 1.0f;
+            MovementStep.X = -1.0f;
+            break;
+        case EMoveDirection::DownLeft:
+            MovementStep.Y = -1.0f;
+            MovementStep.X = -1.0f;
+            break;
         }
 
         // Calculate the new position ensuring frame-rate independence using DeltaTime
@@ -156,4 +172,4 @@ void ATopDownMover::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 
     // Bind the action AND force it to pass the input down the stack
     PlayerInputComponent->BindAction("ToggleMove", IE_Pressed, this, &ATopDownMover::ToggleMovement).bConsumeInput = false;
-} 
+}
