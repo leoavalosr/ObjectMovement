@@ -10,10 +10,15 @@
 UENUM(BlueprintType)
 enum class EMoveDirection : uint8
 {
-	Up      UMETA(DisplayName = "Up"),
-	Down    UMETA(DisplayName = "Down"),
-	Left    UMETA(DisplayName = "Left"),
-	Right   UMETA(DisplayName = "Right")
+	Up      UMETA(DisplayName = "Arriba"),
+	Down    UMETA(DisplayName = "Abajo"),
+	Left    UMETA(DisplayName = "Izquierda"),
+	Right   UMETA(DisplayName = "Derecha"),
+	UpRight   UMETA(DisplayName = "Arriba Derecha"),
+	UpLeft   UMETA(DisplayName = "Arriba Izquierda"),
+	DownRight   UMETA(DisplayName = "Abajo Derecha"),
+	DownLeft   UMETA(DisplayName = "Abajo Izquierda")
+
 };
 
 UCLASS()
@@ -26,15 +31,18 @@ public:
 	ATopDownMover();
 
 protected:
+	// Called when the game starts or when spawned
+	virtual void BeginPlay() override;
+
 	// A visual mesh so we can actually see the object in the editor
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 		class UStaticMeshComponent* MeshComponent;
 
-	// Called when the game starts or when spawned
-	virtual void BeginPlay() override;
-
-public:
+public:	
+	// Called every frame
 	virtual void Tick(float DeltaTime) override;
+
+	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	// 2. Variables exposed to the Visual Editor
@@ -52,6 +60,4 @@ private:
 
 	// Function to listen to the Spacebar
 	void ToggleMovement();
-
-
 };
